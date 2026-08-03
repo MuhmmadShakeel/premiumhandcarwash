@@ -1,0 +1,49 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand: #FB495A;
+  --color-brand-dark: #e53749;
+  --color-ink: #1C1C1D;
+  --color-surface: #f7f7f8;
+  --font-sans: "Arial", "Helvetica Neue", sans-serif;
+}
+
+@layer base {
+  html { scroll-behavior: smooth; }
+  body { margin: 0; min-width: 320px; background: #fff; color: #1C1C1D; font-family: var(--font-sans); }
+  * { box-sizing: border-box; }
+  ::selection { background: #FB495A; color: #fff; }
+  button, a, input, textarea, select { outline-color: #FB495A; }
+}
+
+@layer utilities {
+  .text-balance { text-wrap: balance; }
+  .dark-grid {
+    background-color: #1C1C1D;
+    background-image: linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+    background-size: 38px 38px;
+  }
+  .red-glow { box-shadow: 0 20px 60px rgba(251, 73, 90, .22); }
+  .hero-line { animation: line-drift 3.8s ease-in-out infinite; }
+  .welcome-car { animation: welcome-float 5s ease-in-out infinite; }
+  .wash-orbit { animation: wash-orbit 16s linear infinite; }
+}
+
+@keyframes line-drift {
+  0%, 100% { transform: scaleX(.45); opacity: .2; }
+  50% { transform: scaleX(1); opacity: .75; }
+}
+
+@keyframes welcome-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-7px); }
+}
+
+@keyframes wash-orbit {
+  to { transform: rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+}
